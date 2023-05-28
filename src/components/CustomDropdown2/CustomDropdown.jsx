@@ -16,7 +16,6 @@ const CustomDropdown = ({
   const [searchValue, setSearchValue] = useState("");
   const searchRef = useRef();
   const inputRef = useRef();
-  console.log({ selectedValue });
   useEffect(() => {
     const handler = (e) => {
       if (inputRef.current && !inputRef.current.contains(e.target)) {
@@ -33,7 +32,6 @@ const CustomDropdown = ({
 
   useEffect(() => {
     if (isMulti) {
-      console.log({ isMulti });
       setSelectedValue([]);
     } else {
       setSelectedValue(null);
@@ -141,14 +139,7 @@ const CustomDropdown = ({
   return (
     <div className="dropdown-container">
       <div ref={inputRef} onClick={handleInputClick} className="dropdown-input">
-        <div className="dropdown-selected-value">
-          {getDisplay()}
-          {isSearchable && (
-            <div className="hidden-search-box">
-              <input onChange={onSearch} value={searchValue} ref={searchRef} />
-            </div>
-          )}
-        </div>
+        <div className="dropdown-selected-value">{getDisplay()}</div>
         <div className="dropdown-tools">
           <div className={`dropdown-tool ${showMenu && "invert"}`}>
             <ArrowIcon />
@@ -163,7 +154,8 @@ const CustomDropdown = ({
               <input onChange={onSearch} value={searchValue} ref={searchRef} />
             </div>
           )}
-          {getOptions().map((option) => (
+          <div className="dropdown-menu-list">
+            {getOptions().map((option) => (
             <div
               onClick={() => onItemSelect(option)}
               key={option.value}
@@ -172,6 +164,7 @@ const CustomDropdown = ({
               {option.label}
             </div>
           ))}
+          </div>
         </div>
       )}
     </div>

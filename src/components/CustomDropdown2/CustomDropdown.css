@@ -2,7 +2,7 @@
   text-align: left;
   position: relative;
   max-width: 400px;
-  margin: 50px auto;
+  margin: 0 auto;
   color: #333;
 
   line-height: 1.3;
@@ -27,14 +27,9 @@
 }
 
 .dropdown-menu {
-  position: absolute;
-  transform: translateY(4px);
+  transform: translateY(1px);
   width: 100%;
-  border: 1px solid #ccc;
   border-radius: 5px;
-  overflow: auto;
-  max-height: 150px;
-  background-color: white;
 
   background-color: #fff;
   padding: 0;
@@ -45,7 +40,7 @@
     rgb(0 0 0 / 4%) 0px 10px 10px -5px;
   box-sizing: border-box;
   max-height: 200px;
-  overflow-y: auto;
+  overflow: auto;
   position: absolute;
   top: 100%;
   width: 100%;
@@ -127,23 +122,23 @@
   border-radius: 3px;
 }
 
-.dropdown-container::-webkit-scrollbar {
-  width: 8px;
+.dropdown-menu::-webkit-scrollbar {
+  width: 5px;
 }
 
 /* Track */
 
-.dropdown-container::-webkit-scrollbar-track {
+.dropdown-menu::-webkit-scrollbar-track {
   background: #f1f1f1;
 }
 
 /* Handle */
 
-.dropdown-container::-webkit-scrollbar-thumb {
+.dropdown-menu::-webkit-scrollbar-thumb {
   background: rgba(184, 184, 184, 0.856);
 }
 
 /* Handle on hover */
-.dropdown-container::-webkit-scrollbar-thumb:hover {
+.dropdown-menu::-webkit-scrollbar-thumb:hover {
   background: rgb(170, 164, 164);
 }

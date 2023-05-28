@@ -16,7 +16,7 @@ const CustomDropdown = ({
   const [searchValue, setSearchValue] = useState("");
   const searchRef = useRef();
   const inputRef = useRef();
-
+  console.log({ selectedValue });
   useEffect(() => {
     const handler = (e) => {
       if (inputRef.current && !inputRef.current.contains(e.target)) {
@@ -32,6 +32,15 @@ const CustomDropdown = ({
   }, []);
 
   useEffect(() => {
+    if (isMulti) {
+      console.log({ isMulti });
+      setSelectedValue([]);
+    } else {
+      setSelectedValue(null);
+    }
+  }, [isMulti]);
+
+  useEffect(() => {
     setSearchValue("");
     if (showMenu && searchRef.current) {
       searchRef.current.focus();
@@ -44,7 +53,7 @@ const CustomDropdown = ({
       return placeholder;
     }
 
-    if (isMulti) {
+    if (isMulti && selectedValue.length) {
       return (
         <div className="dropdown-tags">
           {selectedValue.map((option) => (
@@ -79,11 +88,12 @@ const CustomDropdown = ({
     onChange(newValue);
   };
 
-  // show/hide dropdown
+  // show/hide dropdown menu
   const handleInputClick = () => {
     setShowMenu(!showMenu);
   };
 
+  // select an item from dropdown menu
   const onItemSelect = (option) => {
     let newValue;
 
@@ -101,6 +111,7 @@ const CustomDropdown = ({
     onChange(newValue);
   };
 
+  // see if current option is already selected
   const isSelected = (option) => {
     if (isMulti) {
       return selectedValue.filter((o) => o.value === option.value).length > 0;
@@ -111,10 +122,12 @@ const CustomDropdown = ({
     return selectedValue.value === option.value;
   };
 
+  // set search input value
   const onSearch = (e) => {
     setSearchValue(e.target.value);
   };
 
+  // get options based on searchValue or all the options
   const getOptions = () => {
     if (!searchValue) {
       return options;
@@ -128,7 +141,14 @@ const CustomDropdown = ({
   return (
     <div className="dropdown-container">
       <div ref={inputRef} onClick={handleInputClick} className="dropdown-input">
-        <div className="dropdown-selected-value"> {getDisplay()}</div>
+        <div className="dropdown-selected-value">
+          {getDisplay()}
+          {isSearchable && (
+            <div className="hidden-search-box">
+              <input onChange={onSearch} value={searchValue} ref={searchRef} />
+            </div>
+          )}
+        </div>
         <div className="dropdown-tools">
           <div className={`dropdown-tool ${showMenu && "invert"}`}>
             <ArrowIcon />

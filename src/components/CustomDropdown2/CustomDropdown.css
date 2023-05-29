@@ -24,6 +24,28 @@
   align-items: center;
   justify-content: space-between;
   user-select: none;
+  position: relative;
+}
+
+.btn-accessibility {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: none;
+  background-color: transparent;
+  z-index: -1;
+  border-radius: 5px;
+}
+
+button:focus:not(:focus-visible) {
+  /* Remove focus indication when a mouse is used */
+  outline: none;
+}
+button:focus-visible {
+  outline: 0.125rem solid #000000;
+  outline-offset: 0.125rem;
 }
 
 .dropdown-menu {
@@ -66,6 +88,7 @@
   font-weight: 500;
   transition: all 0.2s;
   text-transform: capitalize;
+  position: relative;
 }
 
 .dropdown-item:hover,
@@ -98,7 +121,6 @@
 
 .dropdown-tag-close {
   background-color: transparent;
-  outline: none;
   border: none;
   display: flex;
   align-items: center;
@@ -127,7 +149,7 @@
   padding: 5px;
   border: 1px solid #ccc;
   border-radius: 3px;
-  font-size: 1rem;
+  font-size: 0.9rem;
 }
 
 .dropdown-menu-list::-webkit-scrollbar {

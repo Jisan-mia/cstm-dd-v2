@@ -138,13 +138,22 @@ const CustomDropdown = ({
 
   return (
     <div className="dropdown-container">
-      <div ref={inputRef} onClick={handleInputClick} className="dropdown-input" role="combobox" aria-haspopup="listbox" aria-expanded="false" aria-owns="listbox3">
+      <div
+        ref={inputRef}
+        onClick={handleInputClick}
+        className="dropdown-input"
+        role="combobox"
+        aria-haspopup="listbox"
+        aria-expanded="false"
+        aria-owns="listbox3"
+      >
         <div className="dropdown-selected-value">{getDisplay()}</div>
         <div className="dropdown-tools">
           <div className={`dropdown-tool ${showMenu && "invert"}`}>
             <ArrowIcon />
           </div>
         </div>
+        <button className="btn-accessibility" />
       </div>
 
       {showMenu && (
@@ -156,14 +165,16 @@ const CustomDropdown = ({
           )}
           <div className="dropdown-menu-list">
             {getOptions().map((option) => (
-            <div
-              onClick={() => onItemSelect(option)}
-              key={option.value}
-              className={`dropdown-item ${isSelected(option) && "selected"}`}
-            >
-              {option.label}
-            </div>
-          ))}
+              <div
+                onClick={() => onItemSelect(option)}
+                key={option.value}
+                className={`dropdown-item ${isSelected(option) && "selected"}`}
+              >
+                {option.label}
+        <button className="btn-accessibility" />
+
+              </div>
+            ))}
           </div>
         </div>
       )}

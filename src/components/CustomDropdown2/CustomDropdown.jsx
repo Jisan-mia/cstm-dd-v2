@@ -13,6 +13,7 @@ const CustomDropdown = ({
 }) => {
   const [showMenu, setShowMenu] = useState(false);
   const [selectedValue, setSelectedValue] = useState(isMulti ? [] : null);
+
   const [searchValue, setSearchValue] = useState("");
   const searchRef = useRef();
   const inputRef = useRef();
@@ -57,12 +58,13 @@ const CustomDropdown = ({
           {selectedValue.map((option) => (
             <div key={option.value} className="dropdown-tag-item">
               {option.label}
-              <button
+              <span
                 className="dropdown-tag-close"
                 onClick={(e) => onTagRemove(e, option)}
               >
                 <CloseIcon />
-              </button>
+              </span>
+              <button className="btn-accessibility" />
             </div>
           ))}
         </div>
@@ -171,8 +173,7 @@ const CustomDropdown = ({
                 className={`dropdown-item ${isSelected(option) && "selected"}`}
               >
                 {option.label}
-        <button className="btn-accessibility" />
-
+                <button className="btn-accessibility" />
               </div>
             ))}
           </div>

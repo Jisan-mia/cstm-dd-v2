@@ -15,7 +15,9 @@ function transformDataToAppropriateFormat() {
 const App = () => {
   const [isMulti, setIsMulti] = useState(false);
   const [isSearchable, setIsSearchable] = useState(false);
+  const [value, setValue] = useState(null)
 
+  console.log(value)
   return (
     <div className="container">
       <div className="feature-area">
@@ -45,8 +47,12 @@ const App = () => {
         options={transformDataToAppropriateFormat()}
         isMulti={isMulti}
         isSearchable={isSearchable}
-        onChange={(value) => console.log(value)}
+        onChange={(v) => {
+          setValue(v)
+        }}
       />
+
+      
     </div>
   );
 };

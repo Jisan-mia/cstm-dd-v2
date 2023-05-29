@@ -25,6 +25,7 @@
   justify-content: space-between;
   user-select: none;
   position: relative;
+  line-height: 1.5;
 }
 
 .btn-accessibility {
@@ -116,7 +117,11 @@ button:focus-visible {
   border-radius: 3px;
   background-color: rgba(232, 232, 232, 0.966);
   height: 100%;
-  padding-left: 5px;
+  padding: 0 8px;
+  position: relative;
+  font-size: 1rem;
+  font-weight: 500;
+  opacity: 0.8;
 }
 
 .dropdown-tag-close {
